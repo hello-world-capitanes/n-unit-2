@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Scoring.Core.Interfaces.CalculatePreScoring
 {
-    internal interface ICheckInversionIngresosNetos
+    public interface IApprovingRule
     {
-        bool CheckInversion(Solicitud solicitud);
+        bool Check(Solicitud solicitud);
     }
 }
