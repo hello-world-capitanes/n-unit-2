@@ -11,6 +11,8 @@ namespace Scoring.Model.Entities
         public double IngresosBrutosAnualesAutonomo { get; set; }
         public string Nacionalidad { get; set; }
         public string CifEmpleador { get; set; }
+
+        public DateTime FechaInicioAsalariado { get; set; }
         
 
     }
