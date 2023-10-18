@@ -1,4 +1,4 @@
-# Aplicación Endpoints de scroring – autoaprobación de solicitudes
+# Aplicación Endpoints de scoring – autoaprobación de solicitudes
 
 Se debe poder dar de alta una solicitud de renting llamada API.
 
