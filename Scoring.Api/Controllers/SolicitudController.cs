@@ -29,6 +29,13 @@ namespace Scoring.Api.Controllers
             _logger.LogDebug("calculatePreScoring.");
             base.RegistraInicioLlamada();
 
+            Solicitud solicitud = new Solicitud();
+            solicitud.Inversion = 15000;
+            solicitud.Cuuta = 350;
+            Client cliente = new Client();
+            soliciud.Cliente = cliente;
+
+
             bool resultado = this._preSolicitud.CalculatePreRequest();
 
             _llamadaService.LogLLamada(new LlamadaEntity {
