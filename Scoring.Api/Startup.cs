@@ -7,6 +7,8 @@ using Scoring.Core.Interfaces;
 using Scoring.Core.Interfaces.CalculatePreScoring;
 using Scoring.Core.Services;
 using Scoring.Core.Services.CalculatePreScoring;
+using Scoring.Core.Services.CalculatePreScoring.ApproveRules;
+using Scoring.Core.Services.CalculatePreScoring.DenyRules;
 using Scoring.Logger;
 
 namespace Colegiados.Api
@@ -31,6 +33,13 @@ namespace Colegiados.Api
             services.AddTransient<ILlamadaService, LlamadaService>();
             services.AddTransient<IPreSolicitudRenting, PreSolicitudRenting>();
             services.AddTransient<IApprovePreRequestProcess, ApprovePreRequestProcess>();
+            services.AddTransient<IDenyPreRequestProcess, DenyPreRequestProcess>();
+            //Reglas de aprobación
+            services.AddTransient<IApproveRule, InvestmentLowerNetIncomeRule>();
+            services.AddTransient<IApproveRule, NationalityRule>();
+            //Reglas de denegación
+            services.AddTransient<IDenyRule, MinimalAgeRule>();
+
 
             services.AddTransient<ILogger, LoggerImpl>();
             

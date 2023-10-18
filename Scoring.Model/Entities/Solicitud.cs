@@ -8,9 +8,19 @@ namespace Scoring.Model.Entities
 {
     public class Solicitud
     {
-        public float Inversion { get; set; }
-        public float Couta { get; set; }
+        public Solicitud()
+        {
+            this.FechaSolicitud = DateTime.Now;
+        }
 
-        public Cliente cliente { get; set; }
+        public DateTime FechaSolicitud { get; }
+        public float Inversion { get; set; }
+        public float Cuota { get; set; }
+
+        public int PlazoMeses { get; set; }
+
+        public DateTime FechaInicioVigor{ get; set; }
+
+        public Cliente Cliente { get; set; }
     }
 }

@@ -5,6 +5,8 @@ using Scoring.Core.Interfaces;
 using Scoring.Logger;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
+using Scoring.Model;
 
 namespace Scoring.Api.Controllers
 {
@@ -31,12 +33,18 @@ namespace Scoring.Api.Controllers
 
             Solicitud solicitud = new Solicitud();
             solicitud.Inversion = 15000;
-            solicitud.Cuuta = 350;
-            Client cliente = new Client();
-            soliciud.Cliente = cliente;
+            solicitud.Cuota = 250;
+            Cliente cliente = new Cliente();
+            cliente.CifEmpleador = "A25365895";
+            cliente.FechaInicioEmpleoAsalariado = null;
+            cliente.FechaNacimiento = new DateTime(1982, 12, 31);
+            cliente.IngresosNetosAsalariado = 39000;
+            cliente.IngresosBrutosAutonomo = 0;
+            cliente.IngresosNetosAutonomo = 0;
+            solicitud.Cliente = cliente;
 
 
-            bool resultado = this._preSolicitud.CalculatePreRequest();
+            EstadoPreSolicitud preResultadoSolicitud = this._preSolicitud.CalculatePreRequest(solicitud);
 
             _llamadaService.LogLLamada(new LlamadaEntity {
                 UrlOrigen = base.GetUrlOrigen(),
@@ -46,7 +54,7 @@ namespace Scoring.Api.Controllers
                 Observaciones = "",
             });
 
-            return Ok("Solicitud enviada correctamente");
+            return Ok(preResultadoSolicitud.ToString());
            
         }
 
