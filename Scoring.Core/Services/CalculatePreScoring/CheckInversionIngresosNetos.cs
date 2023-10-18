@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scoring.Core.Interfaces.CalculatePreScoring
+namespace Scoring.Core.Services.CalculatePreScoring
 {
-    internal interface CheckInversionIngresosNetos
+    internal class CheckInversionIngresosNetos
     {
     }
 }
