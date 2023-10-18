@@ -10,6 +10,13 @@ namespace Scoring.Core.UnitTest
     {
         private IPreSolicitudRenting service;
         private Mock<IApprovePreRequestProcess> approvePreRequestProcessMock = new Mock<IApprovePreRequestProcess>();
+
+        [OneTimeSetUp]
+        public void SetupOnce()
+        {
+
+        }
+
         [SetUp]
         public void Setup()
         {
@@ -19,15 +26,23 @@ namespace Scoring.Core.UnitTest
         [Test]
         public void Test_CalculatePreRequest_ShouldBeTrue_When_ApprovedRulesTrue()
         {
+            //Given
             this.approvePreRequestProcessMock.Setup(a => a.ApprovedRules()).Returns(true);
-            Assert.IsTrue(this.service.CalculatePreRequest());            
+            //When
+            bool result = this.service.CalculatePreRequest();
+            //Then
+            Assert.IsTrue(result);
         }
 
         [Test]
         public void Test_CalculatePreRequest_ShouldBeFalse_When_ApprovedRulesFalse()
         {
+            //Given
             this.approvePreRequestProcessMock.Setup(a => a.ApprovedRules()).Returns(false);
-            Assert.IsFalse(this.service.CalculatePreRequest());
+            //When
+            bool result = this.service.CalculatePreRequest();
+            //Then
+            Assert.IsFalse(result);
         }
     }
 }

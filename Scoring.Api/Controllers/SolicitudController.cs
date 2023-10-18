@@ -29,6 +29,8 @@ namespace Scoring.Api.Controllers
             _logger.LogDebug("calculatePreScoring.");
             base.RegistraInicioLlamada();
 
+            bool resultado = this._preSolicitud.CalculatePreRequest();
+
             _llamadaService.LogLLamada(new LlamadaEntity {
                 UrlOrigen = base.GetUrlOrigen(),
                 LlamServicio = base.GetUrlDestino(),
@@ -37,69 +39,8 @@ namespace Scoring.Api.Controllers
                 Observaciones = "",
             });
 
-            bool resultado = this._preSolicitud.CalculatePreRequest();
-
             return Ok();
-
-
-            /*List<ApiServicioParametroEntity> parametros = this.GetQueryParamsColegiados(HttpContext.Request.Query);
-            
-            OdooResponse colegiadoResponse = new OdooResponse();
-            try
-            {
-                colegiadoResponse = await _colegiadoService.ProcessGetColegiadosFromOdooApi(token, base.GetUrlOrigen(), parametros);
-                if(colegiadoResponse != null)
-                {
-                    HttpContext.Response.Headers.Add("X-Total-Count", colegiadoResponse.TotalElments.ToString());
-                }
-
-            }
-            catch (ErrorTokenExternoFarmException ex)
-            {
-                base.RegistraFarmErrorLlamada(ex);
-                try
-                {
-                   parametros = this.GetQueryParamsColegiados(HttpContext.Request.Query);
-                   colegiadoResponse = await _colegiadoService.RetryGetColegiadosFromOdooApiNoExternalToken(token, base.GetUrlOrigen(), parametros);
-                   HttpContext.Response.Headers.Add("X-Total-Count", colegiadoResponse.TotalElments.ToString());
-                } catch(Exception generalEx)
-                {
-                    _logger.LogError("Error no controlado. ", generalEx);
-                    return StatusCode(500, new ErrorModel {
-                        Code = 999,
-                        Message = "Ha ocurrido un error. Inténtelo de nuevo más tarde. Si el error persiste contacte con su administrador"
-                    });
-                }
-            }
-            catch (FarmException ex)
-            {
-                base.RegistraFarmErrorLlamada(ex);
-                return StatusCode(ex.HttpCode, new ErrorModel {
-                    Code = ex.InternalCode,
-                    Message = ex.InternalMessage
-                });
-            } catch(Exception ex)
-            {
-                _logger.LogError("Error no controlado. ", ex);
-                return StatusCode(500, new ErrorModel {
-                    Code = 999,
-                    Message = "Ha ocurrido un error. Inténtelo de nuevo más tarde. Si el error persiste contacte con su administrador"
-                });
-            }
-
-            _ = _llamadaService.InsertLLamada(new LlamadaEntity {
-                Lla_UrlOrigen = base.GetUrlOrigen(),
-                Lla_LlamServicio = base.GetUrlDestino(),
-                Lla_ParaEntrada = base.GetParamsEntrada(),
-                Lla_ParaSalida = colegiadoResponse.BodyResponse,
-                Lla_Observaciones = "",
-                Uss_Id = colegiadoResponse.UserServiceToken.userServiceId,
-                Tkn_Id = colegiadoResponse.UserServiceToken.tokenId
-
-            });
-
-            return Ok(colegiadoResponse.BodyResponse);
-            */
+           
         }
 
     }
