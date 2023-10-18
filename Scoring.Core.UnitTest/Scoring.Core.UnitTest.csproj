@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Scoring.Core\Scoring.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CalculatePreScoring\" />
-  </ItemGroup>
-
 </Project>

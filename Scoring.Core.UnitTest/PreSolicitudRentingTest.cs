@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Scoring.Core.Interfaces;
 using Scoring.Core.Interfaces.CalculatePreScoring;
 using Scoring.Core.Services;
+using Scoring.Model.Entities;
 
 namespace Scoring.Core.UnitTest
 {
@@ -10,6 +11,7 @@ namespace Scoring.Core.UnitTest
     {
         private IPreSolicitudRenting service;
         private Mock<IApprovePreRequestProcess> approvePreRequestProcessMock = new Mock<IApprovePreRequestProcess>();
+        private Solicitud solicitud;
 
         [OneTimeSetUp]
         public void SetupOnce()
@@ -27,9 +29,9 @@ namespace Scoring.Core.UnitTest
         public void Test_CalculatePreRequest_ShouldBeTrue_When_ApprovedRulesTrue()
         {
             //Given
-            this.approvePreRequestProcessMock.Setup(a => a.ApprovedRules()).Returns(true);
+            this.approvePreRequestProcessMock.Setup(a => a.ApprovedRules(solicitud)).Returns(true);
             //When
-            bool result = this.service.CalculatePreRequest();
+            bool result = this.service.CalculatePreRequest(solicitud);
             //Then
             Assert.IsTrue(result);
         }
@@ -38,9 +40,9 @@ namespace Scoring.Core.UnitTest
         public void Test_CalculatePreRequest_ShouldBeFalse_When_ApprovedRulesFalse()
         {
             //Given
-            this.approvePreRequestProcessMock.Setup(a => a.ApprovedRules()).Returns(false);
+            this.approvePreRequestProcessMock.Setup(a => a.ApprovedRules(solicitud)).Returns(false);
             //When
-            bool result = this.service.CalculatePreRequest();
+            bool result = this.service.CalculatePreRequest(solicitud);
             //Then
             Assert.IsFalse(result);
         }

@@ -10,6 +10,11 @@ namespace Scoring.Core.Services.CalculatePreScoring
 {
     public class CheckInversionTotal : IApprovingRule
     {
+
+        public CheckInversionTotal()
+        {
+        }
+
         public bool Check(Solicitud solicitud)
         {
             return solicitud.Inversion <= 80000;
