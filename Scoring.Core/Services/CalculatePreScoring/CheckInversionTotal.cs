@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 
 namespace Scoring.Core.Services.CalculatePreScoring
 {
-    public class CheckInversionIngresosNetos : IApprovingRule
+    public class CheckInversionTotal : IApprovingRule
     {
+
+        public CheckInversionTotal()
+        {
+        }
+
         public bool Check(Solicitud solicitud)
         {
-            double inversion = solicitud.Inversion;
-            double ingresosNeto = solicitud.cliente.IngresosNetosAnualesAsalariado + solicitud.cliente.IngresosNetosAnualesAutonomo;
-            return inversion <= ingresosNeto;
+            return solicitud.Inversion <= 80000;
         }
     }
 }

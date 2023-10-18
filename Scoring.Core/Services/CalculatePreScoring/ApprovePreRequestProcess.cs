@@ -7,11 +7,16 @@ namespace Scoring.Core.Services.CalculatePreScoring
 {
     public class ApprovePreRequestProcess : IApprovePreRequestProcess
     {
-        
+        private readonly IApprovingRule approvingRule;
 
-        public bool ApprovedRules()
+        public ApprovePreRequestProcess (IApprovingRule approvingRule)
         {
-            return true;
+            this.approvingRule = approvingRule;
+        }
+        public bool ApprovedRules(Solicitud solicitud)
+        {
+            return approvingRule.Check(solicitud);
+            
         }
 
 
