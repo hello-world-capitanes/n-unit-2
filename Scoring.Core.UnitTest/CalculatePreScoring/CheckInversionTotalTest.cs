@@ -14,8 +14,7 @@ namespace Scoring.Core.UnitTest.CalculatePreScoring
     internal class CheckInversionTotalTest
     {
         private IApprovingRule service;
-        private Mock<IApprovingRule> approvePreRequestProcessMock = new Mock<IApprovingRule>();
-        private Solicitud solicitud;
+        
 
         [SetUp]
         public void Setup()
@@ -24,20 +23,22 @@ namespace Scoring.Core.UnitTest.CalculatePreScoring
         }
 
         [Test]
-        public void Text_ChheckInversionTotal_ShouldBeTrue()
+        public void Text_CheckInversionTotal_ShouldBeTrue_When_CheckInversionTotal_Is_Lower()
         {
             //Given
-            this.approvePreRequestProcessMock.Setup(a => a.Check(solicitud));
+            Solicitud solicitud = new Solicitud();
+            solicitud.Inversion = 60000;
             //When
             bool result = this.service.Check(solicitud);
             //Then
             Assert.IsTrue(result);
         }
         [Test]
-        public void Text_ChheckInversionTotal_ShouldBeFalse()
+        public void Text_CheckInversionTotal_ShouldBeFalse_When_CheckInversionTotal_Is_Higher()
         {
             //Given
-            this.approvePreRequestProcessMock.Setup(a => a.Check(solicitud));
+            Solicitud solicitud = new Solicitud();
+            solicitud.Inversion = 90000;
             //When
             bool result = this.service.Check(solicitud);
             //Then
