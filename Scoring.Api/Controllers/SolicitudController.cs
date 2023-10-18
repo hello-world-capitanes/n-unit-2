@@ -35,7 +35,7 @@ namespace Scoring.Api.Controllers
             Cliente cliente = new Cliente();
             solicitud.cliente= cliente;
 
-            bool resultado = this._preSolicitud.CalculatePreRequest();
+            bool resultado = this._preSolicitud.CalculatePreRequest(solicitud);
 
             _llamadaService.LogLLamada(new LlamadaEntity {
                 UrlOrigen = base.GetUrlOrigen(),
