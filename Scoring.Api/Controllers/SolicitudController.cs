@@ -39,7 +39,7 @@ namespace Scoring.Api.Controllers
                 Observaciones = "",
             });
 
-            return Ok();
+            return Ok("Solicitud enviada correctamente");
            
         }
 
