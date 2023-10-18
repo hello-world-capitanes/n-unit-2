@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scoring.Core.Interfaces.CalculatePreScoring
+namespace Scoring.Core.Services.CalculatePreScoring
 {
     public class CheckInversionTotal : IApprovingRules
     {
-        public bool ApprovedInversionTotal (Solicitud solicitud)
+        public bool ApprovedInversionTotal(Solicitud solicitud)
         {
             if (solicitud.Inversion <= 80000)
             {
