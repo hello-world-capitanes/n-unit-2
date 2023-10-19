@@ -29,7 +29,13 @@ namespace Scoring.Api.Controllers
             _logger.LogDebug("calculatePreScoring.");
             base.RegistraInicioLlamada();
 
-            bool resultado = this._preSolicitud.CalculatePreRequest();
+            Solicitud solicitud = new Solicitud();
+            solicitud.Inversion = 15000;
+            solicitud.Cuota = 350;
+            Cliente cliente = new Cliente();
+            solicitud.cliente= cliente;
+
+            bool resultado = this._preSolicitud.CalculatePreRequest(solicitud);
 
             _llamadaService.LogLLamada(new LlamadaEntity {
                 UrlOrigen = base.GetUrlOrigen(),
