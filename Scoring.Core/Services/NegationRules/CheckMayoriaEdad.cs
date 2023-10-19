@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scoring.Core.Services.CalculatePreScoring
+namespace Scoring.Core.Services.NegationRules
 {
     public class CheckMayoriaEdad : INegationRule
     {
@@ -16,10 +16,11 @@ namespace Scoring.Core.Services.CalculatePreScoring
         {
             int age = getAge(solicitud.cliente.FechaDeNacimiento);
 
-            return age < 18 ;
+            return age < 18;
         }
 
-        private int getAge(DateTime birthDate) {
+        private int getAge(DateTime birthDate)
+        {
 
             DateTime today = DateTime.Today;
 
