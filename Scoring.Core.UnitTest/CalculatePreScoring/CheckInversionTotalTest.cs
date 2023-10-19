@@ -23,24 +23,24 @@ namespace Scoring.Core.UnitTest.CalculatePreScoring
         }
 
         [Test]
-        public void Text_CheckInversionTotal_ShouldBeTrue_When_CheckInversionTotal_Is_Lower()
+        public void Test_CheckInversionTotal_ShouldBeTrue_When_CheckInversionTotal_Is_Lower()
         {
             //Given
             Solicitud solicitud = new Solicitud();
             solicitud.Inversion = 60000;
             //When
-            bool result = this.service.Check(solicitud);
+            bool result = service.Check(solicitud);
             //Then
             Assert.IsTrue(result);
         }
         [Test]
-        public void Text_CheckInversionTotal_ShouldBeFalse_When_CheckInversionTotal_Is_Higher()
+        public void Test_CheckInversionTotal_ShouldBeFalse_When_CheckInversionTotal_Is_Higher()
         {
             //Given
             Solicitud solicitud = new Solicitud();
             solicitud.Inversion = 90000;
             //When
-            bool result = this.service.Check(solicitud);
+            bool result = service.Check(solicitud);
             //Then
             Assert.IsFalse(result);
         }
