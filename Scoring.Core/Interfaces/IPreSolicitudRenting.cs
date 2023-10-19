@@ -1,9 +1,11 @@
 ﻿
+using Scoring.Model.Entities;
+
 namespace Scoring.Core.Interfaces
 {
     public interface IPreSolicitudRenting
     {
-        bool CalculatePreRequest();
+        bool CalculatePreRequest(Solicitud solicitud);
         
     }
 }

@@ -1,13 +1,25 @@
 ﻿
 using Scoring.Core.Interfaces.CalculatePreScoring;
+using Scoring.Model.Entities;
+using System.Runtime.InteropServices;
 
 namespace Scoring.Core.Services.CalculatePreScoring
 {
     public class ApprovePreRequestProcess : IApprovePreRequestProcess
     {
-        public bool ApprovedRules()
+        private readonly IApprovingRule approvingRule;
+
+        public ApprovePreRequestProcess (IApprovingRule approvingRule)
         {
-            return true;
+            this.approvingRule = approvingRule;
         }
+        public bool ApprovedRules(Solicitud solicitud)
+        {
+            return approvingRule.Check(solicitud);
+            
+        }
+
+
+
     }
 }
