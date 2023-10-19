@@ -8,6 +8,10 @@ namespace Scoring.Core.Services.CalculatePreScoring
     public class ApprovePreRequestProcess : IApprovePreRequestProcess
     {
         private readonly IApprovingRule approvingRule;
+        Asalariado asalariado1;
+        CheckInversionIngresosNetos ingresosNetos;
+        CheckInversionTotal inversionTotal;
+        //Nacionalidad
 
         public ApprovePreRequestProcess (IApprovingRule approvingRule)
         {
@@ -15,8 +19,10 @@ namespace Scoring.Core.Services.CalculatePreScoring
         }
         public bool ApprovedRules(Solicitud solicitud)
         {
-            return approvingRule.Check(solicitud);
+            Asalariado asalariado = new Asalariado();
             
+            return asalariado1.Check(solicitud) && ingresosNetos.Check(solicitud) && inversionTotal.Check(solicitud) && /*nacionalidad aqui*/;
+
         }
 
 
