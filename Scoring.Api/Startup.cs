@@ -37,6 +37,8 @@ namespace Colegiados.Api
             //Reglas de aprobación
             services.AddTransient<IApproveRule, InvestmentLowerNetIncomeRule>();
             services.AddTransient<IApproveRule, NationalityRule>();
+            services.AddTransient<IApproveRule, InvestmentLowerThanLimitRule>();
+            
             //Reglas de denegación
             services.AddTransient<IDenyRule, MinimalAgeRule>();
 
