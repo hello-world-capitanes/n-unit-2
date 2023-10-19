@@ -18,11 +18,8 @@ namespace Scoring.Core.Services.CalculatePreScoring
             this.approvingRule = approvingRule;
         }
         public bool ApprovedRules(Solicitud solicitud)
-        {
-            Asalariado asalariado = new Asalariado();
-            
+        {            
             return asalariado1.Check(solicitud) && ingresosNetos.Check(solicitud) && inversionTotal.Check(solicitud) && /*nacionalidad aqui*/;
-
         }
 
 
