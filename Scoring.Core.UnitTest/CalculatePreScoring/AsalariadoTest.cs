@@ -61,6 +61,7 @@ namespace Scoring.Core.UnitTest.CalculatePreScoring
             //Given
             Solicitud solicitud = new Solicitud();
             DateTime fecha = new DateTime(2050, 12, 31); //Deberia devolver 1
+            solicitud.cliente = new Cliente();
             solicitud.cliente.FechaInicioAsalariado = fecha;
             string CIFprueba = "2457802";
             solicitud.cliente.CifEmpleador = CIFprueba;

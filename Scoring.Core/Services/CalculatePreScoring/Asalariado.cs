@@ -19,7 +19,7 @@ namespace Scoring.Core.Services.CalculatePreScoring
             Informa informa = new Informa();
             bool tieneCIF = informa.CIFs.Contains(solicitud.cliente.CifEmpleador);
 
-            return (comparoFechas <= 0 && tieneCIF );
+            return (comparoFechas < 0 && tieneCIF );
               //  throw new NotImplementedException();
         }
 
