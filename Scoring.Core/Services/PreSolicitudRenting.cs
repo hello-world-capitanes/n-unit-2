@@ -1,5 +1,6 @@
 ﻿using Scoring.Core.Interfaces;
 using Scoring.Core.Interfaces.CalculatePreScoring;
+using Scoring.Model.Entities;
 
 namespace Scoring.Core.Services
 {
@@ -12,9 +13,9 @@ namespace Scoring.Core.Services
             _approvePreRequestProcess = approvePreRequestProcess;
         }
 
-        public bool CalculatePreRequest()
+        public bool CalculatePreRequest(Solicitud solicitud)
         {
-            return this._approvePreRequestProcess.ApprovedRules();
+            return this._approvePreRequestProcess.ApprovedRules(solicitud);
             
         }
     }
